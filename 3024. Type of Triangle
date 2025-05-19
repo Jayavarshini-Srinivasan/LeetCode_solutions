@@ -1,0 +1,19 @@
+//3024. Type of Triangle
+class Solution {
+    public String triangleType(int[] nums) {
+        // check if a valid triangle can be formed using the numbers
+        if (nums[0] + nums[1] <= nums[2] ||
+            nums[0] + nums[2] <= nums[1] ||
+            nums[1] + nums[2] <= nums[0]) {
+            return "none";
+        }
+        // classify the type of triange
+        if (nums[0] == nums[1] && nums[1] == nums[2]) {
+            return "equilateral";
+        }
+        if (nums[0] == nums[1] || nums[1] == nums[2] || nums[0] == nums[2]) {
+            return "isosceles";
+        }
+        return "scalene";
+    }
+}
