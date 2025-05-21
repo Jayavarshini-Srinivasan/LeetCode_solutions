@@ -1,0 +1,9 @@
+//3010. Divide an Array Into Subarrays With Minimum Cost I
+class Solution {
+    public int minimumCost(int[] nums) {
+        int s=nums[0];
+        Arrays.sort(nums,1,nums.length);
+        s+=nums[1]+nums[2];
+        return s;
+    }
+}
