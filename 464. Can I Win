@@ -1,0 +1,30 @@
+//464. Can I Win
+class Solution {
+    private Map<Integer, Boolean> memo;
+
+    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
+        if (desiredTotal <= maxChoosableInteger) return true;
+        int sum = (maxChoosableInteger + 1) * maxChoosableInteger / 2;
+        if (sum < desiredTotal) return false;
+
+        memo = new HashMap<>();
+        return canIWinHelper(maxChoosableInteger, desiredTotal, 0);
+    }
+
+    private boolean canIWinHelper(int max, int total, int used) {
+        if (memo.containsKey(used)) return memo.get(used);
+
+        for (int i = 1; i <= max; i++) {
+            int curBit = 1 << i;
+            if ((used & curBit) != 0) continue;
+
+            if (i >= total || !canIWinHelper(max, total - i, used | curBit)) {
+                memo.put(used, true);
+                return true;
+            }
+        }
+
+        memo.put(used, false);
+        return false;
+    }
+}
