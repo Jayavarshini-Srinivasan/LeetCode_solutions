@@ -1,0 +1,17 @@
+// 3550.mallest-index-with-digit-sum-equal-to-index
+class Solution {
+    public int smallestIndex(int[] nums) {
+        for(int i=0;i<nums.length;i++){
+            int num=0;
+            int a=nums[i];
+            while(a!=0){
+                  num+=a%10;
+                a/=10;
+            }
+            if(num==i){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
