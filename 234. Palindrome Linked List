@@ -1,0 +1,17 @@
+//234. Palindrome Linked List
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        List<Integer> list = new ArrayList();
+        while(head != null){
+            list.add(head.val);
+            head=head.next;
+        }
+        int lft=0;
+        int ryt=list.size()-1;
+        while(lft<ryt && list.get(lft)==list.get(ryt)){
+            lft++;
+            ryt--;
+        }
+        return lft>=ryt;
+    }
+}
