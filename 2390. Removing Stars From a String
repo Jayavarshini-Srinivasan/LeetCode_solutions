@@ -1,0 +1,36 @@
+//2390. Removing Stars From a String
+//stack
+class Solution {
+    public String removeStars(String s) {
+        Stack<Character> stack = new Stack<>();
+        for(char c:s.toCharArray()){
+            if(c=='*'){
+                stack.pop();
+            }
+            else{
+                stack.push(c);
+            }
+        }
+        String ans="";
+        for(char c:stack){
+            ans+=c;
+        }
+        return ans;
+    }
+}
+
+//brute force
+class Solution {
+    public String removeStars(String s) {
+      StringBuilder c = new StringBuilder();
+      for(int i=0;i<s.length();i++){
+        if(s.charAt(i)=='*'){
+            c.deleteCharAt(c.length()-1);
+        }
+        else{
+            c.append(s.charAt(i));
+        }
+      }  
+      return c.toString();
+    }
+}
